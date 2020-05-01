@@ -1,0 +1,117 @@
+body {
+    background-color: #f1f1f1;
+}
+
+.header-userList {
+    color: #adadad;
+    background-color: #404040;
+    height: auto;
+}
+
+#button-logout {
+    text-align: right;
+}
+
+#button-logout a {
+    color: #adadad;
+}
+
+#button-close:hover, #button-edit-user:hover {
+    background-color: #3d89be;
+}
+
+#button-edit {
+    background-color: #3ebddd;
+}
+
+#button-add {
+    background-color: green;
+}
+
+.left-panel {
+    background-color: #f7f7f7;
+    height: 100vh;
+}
+
+.active-left-tab {
+    background-color: #519ed4;
+    color: #f7f7f7;
+}
+
+.dative-left-tab:visited {
+    background-color: #f7f7f7;
+    color: #7294c4;
+}
+
+.right-panel {
+    background-color: #f1f1f1;
+    justify-content: space-between;
+}
+
+tr:nth-child(odd) { background-color: #FAFAFA; }
+
+.table-addUser {
+    background-color: white;
+    text-align: center;
+    padding: 0;
+}
+
+#message, #message1, #message2 {
+    font-weight: bold;
+    border-radius: 5px;
+    border-width: 0px;
+    background-color: #f1f1f1;
+    padding-left: 0px;
+}
+
+.nav-item:hover {
+    background-color: #3d89be;
+}
+/*.table-userList {*/
+/*    border-radius: 5px;*/
+/*    box-shadow: grey;*/
+/*    border: 1px #b4b4b4;*/
+/*    background-color: white;*/
+/*    padding: 0;*/
+/*}*/
+
+
+
+
+
+/*menu-panel-left {*/
+/*    color: white;*/
+/*    background-color: #519ed4;*/
+/*}*/
+
+/*.left-menu, .right-menu {*/
+/*    color: #3f8ec4;*/
+/*}*/
+
+
+
+
+
+/*#button-logout a {*/
+/*    color: #adadad;*/
+/*}*/
+
+
+
+/*#button-add {*/
+/*    background-color: #67bb6a;*/
+/*    position: relative;*/
+/*    left: 30%;*/
+/*}*/
+
+
+
+
+/*#admin-panel {*/
+/*    color: #424242;*/
+/*}*/
+
+
+
+
+

@@ -1,0 +1,219 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row header-userList">
+        <div class="col col-6">
+            <h5>Project name</h5>
+        </div>
+        <div class="col col-6" id="button-logout">
+            <a th:href="${#request.getContextPath()} + '/logout'" method="POST" >Logout</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col col-2 left-panel">
+            <br>
+            <nav class="nav nav-pills flex-column">
+                <a class="nav-link left-menu active" data-toggle="pill" href="#users-table">Admin</a><br>
+
+                <a class="nav-link left-menu" th:href="${#request.getContextPath()} + '/users/read'">User</a>
+            </nav>
+        </div>
+        <div class="col col-10 right-panel">
+            <h2 id="admin-panel"><strong>Admin panel</strong></h2><br>
+
+            <!-- Nav pills -->
+            <div class="container-fluid">
+                <ul id="myTab" class="nav nav-pills" role="tablist">
+                    <li class="nav-item ">
+                        <a id="tab-users-table" class="nav-link active" data-toggle="pill" role="tab" href="#users-table">Users table</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="tab-new-user" class="nav-link" data-toggle="pill"  role="tab" href="#new-user">New User</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div id="users-table" role="tabpanel" class="container-fluid tab-pane active"><br>
+
+                        <table  class="table">
+                            <thead class="thead">
+                            <tr class="container-fluid">
+                                <th id="message1" scope="col" th:utext="${message1}"></th>
+                            </tr>
+                            </thead>
+
+                            <!--                        <table  class="table table-bordered">-->
+                            <thead class="thead table-userList">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Update</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                            </thead>
+
+                            <tbody class="table table-userList" id="userListHtml">
+                            </tbody>
+
+                            <!-- The Modal -->
+
+                                <div class="modal" id="myModal" data-backdrop="false"> <!-- th:id="'myModal' + ${user.id}" -->
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title"></h4> <!-- th:utext="'Edit user ' + ${user.username} -->
+<!--                                                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                                            </div>
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                <!--                                                    <form action="" method="POST"> &lt;!&ndash; th:action="${#request.getContextPath()} + '/users/update/' + ${user.id}" &ndash;&gt;-->
+
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="form-group col-sm-10 table-addUser">
+                                                        <label for="userIdList"><strong>ID</strong></label>
+                                                        <input value="" type="text" name="id" class="form-control" id="userIdList" readonly>
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="form-group col-sm-10 table-addUser">
+                                                        <label for="userEmailList"><strong>Email</strong></label>
+                                                        <input value="" type="text"  width=100px name="email" class="form-control" id="userEmailList">
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="form-group col-sm-10 table-addUser">
+                                                        <label for="userNameList"><strong>Login</strong></label>
+                                                        <input value="" type="text" width=100px name="username" class="form-control" id="userNameList">
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="form-group col-sm-10 table-addUser">
+                                                        <label for="userPasswordList"><strong>Password</strong></label>
+                                                        <input value="" type="text"  width=100px name="password" class="form-control" id="userPasswordList">
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="form-group col-sm-10 table-addUser">
+                                                        <label for="userRolesList"><strong>Roles</strong></label>
+                                                        <select class="form-control" name="roles" enctype="multipart/form-data" id="userRolesList" multiple>
+                                                            <option value="USER" selected>USER</option>
+                                                            <option value="ADMIN">ADMIN</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="layer2" id="modal-footer">
+                                                <button  id="modal-footer-close" type="button" class='btn btn-info'  onclick="1" >Close</button>
+                                                <button id="modal-footer-edit" type="button" class='btn btn-info' onclick="1">Edit user</button>
+                                            </div>
+                                            <!-- Modal footer -->
+
+
+                                            <div></div>
+                                        </div>
+                                        <br>
+                                        <br>
+                                    </div>
+                                </div>
+                                </tr>
+<!--                            </th:block>-->
+
+
+                        </table>
+
+
+                    </div>
+
+                    <!-- Tab panes -->
+                    <div id="new-user" role="tabpanel" class="container-fluid tab-pane table-addUser">
+
+                        <table  class="container-fluid table">
+                            <thead class="thead">
+                            <tr>
+                                <th id="message2" class="message2" scope="col" th:utext="${message2}"></th>
+                            </tr>
+                            </thead>
+                        </table>
+<!--                        <form class="form  table-addUser" th:action="${#request.getContextPath()} + '/users/create'" method="POST">-->
+
+                            <div class="d-flex justify-content-center">
+                                <div class="form-group col-sm-4">
+                                    <label for="userEmail"><strong>Email</strong></label>
+                                    <input placeholder="Enter email" type="text" name="email" class="form-control" id="userEmail" aria-describedby="userEmailHelp">
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <div class="form-group col-sm-4">
+                                    <label for="userName"><strong>Login</strong></label>
+                                    <input placeholder="Login" type="text" name="username" class="form-control" id="userName" aria-describedby="userNameHelp">
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <div class="form-group col-sm-4">
+                                    <label for="userPassword"><strong>Password</strong></label>
+                                    <input placeholder="Password" type="text" name="password" class="form-control" id="userPassword" aria-describedby="userPasswordHelp">
+                                </div>
+                            </div>
+
+
+                            <div class="d-flex justify-content-center">
+                                <div class="form-group col-sm-4">
+                                    <label for="userRoles"><strong>Role</strong></label>
+                                    <select name="roles" aria-describedby="userRolesHelp" class="form-control" id="userRoles" enctype="multipart/form-data" multiple>
+                                        <option th:value="USER" selected>user</option>
+                                        <option th:value="ADMIN">admin</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary" id="button-add" onclick="addUser()">Add new user</button>
+                                </div>
+                            </div>
+
+<!--                        </form>-->
+                    </div> <!-- end of container -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script src="/admin.js"></script>
+</body>
+</html>
