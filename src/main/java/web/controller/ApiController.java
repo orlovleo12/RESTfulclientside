@@ -35,6 +35,8 @@ public class ApiController {
     @PostMapping(path = "create")
     public ResponseEntity<User> createUserPostRestController(@RequestBody User user) {
         restService.addUser(user);
+        User tempUser = (User) restService.loadUserByUsername(user.getUsername());
+        user.setId(tempUser.getId());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 

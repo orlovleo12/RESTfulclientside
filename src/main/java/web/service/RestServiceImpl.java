@@ -43,7 +43,6 @@ public class RestServiceImpl implements UserDetailsService, UserServiсe {
     public void updateUser(User user) {
         Map<String, String> params = new HashMap<>();
         params.put("id", user.getId().toString());
-
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put("http://localhost:8081/rest/update", user, params);
 
